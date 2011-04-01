@@ -17,6 +17,6 @@ class PersonalPortletManagerRenderer(ColumnPortletManagerRenderer):
     """
 
     adapts(Interface, IDefaultBrowserLayer, IBrowserView, IPersonalPortletManager)
-    template = ViewPageTemplateFile('browser/templates/personal-portlet.pt')
+    template = ViewPageTemplateFile('browser/templates/personal-portlets.pt')
 
     
