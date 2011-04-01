@@ -54,6 +54,6 @@ class DefaultPersonalPortlet(object):
 
     def __call__(self):
         return {
-            'plone.rightcolumn' : (portlets.news.Assignment(), portlets.events.Assignment(),),
+            'plone.rightcolumn' : (portlets.calendar.Assignment(), ),
         }
 
