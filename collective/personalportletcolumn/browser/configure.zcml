@@ -1,0 +1,24 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+    <adapter
+      factory="collective.personalportletcolumn.manager.PersonalPortletManagerRenderer"
+      provides="plone.portlets.interfaces.IPortletManagerRenderer"
+      />
+
+    <adapter
+      factory=".editmanager.PersonalportletEditPortletManagerRenderer"
+      provides="plone.portlets.interfaces.IPortletManagerRenderer"
+        />
+    
+    <browser:page
+      for="plone.portlets.interfaces.ILocalPortletAssignable"
+      class=".manage.ManagePersonalPortlets"
+      permission="plone.app.portlets.ManageOwnPortlets"
+      name="manage-personal-portlets"
+      template="templates/manage-personal-portlets.pt"
+    />
+
+
+</configure>

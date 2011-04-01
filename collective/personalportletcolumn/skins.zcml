@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    i18n_domain="collective.personalportletcolumn">
+
+  <!--
+  <cmf:registerDirectory name="templates"/>
+  <cmf:registerDirectory name="images"/>
+  -->
+
+
+  <cmf:registerDirectory name="skins" directory="skins" recursive="True" />
+
+</configure>

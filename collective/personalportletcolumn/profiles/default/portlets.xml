@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+
+  <!-- Columns (portlet managers) -->
+  <!--
+
+    This would work, but it would purge the portlet data in every
+    case, even at reinstall or upgrade.
+
+    To make sure reinstall and upgrade works without loosing the
+    portlet assignments and data, we do this in an import_various
+    step, instead.
+
+
+    <portletmanager remove="True"
+        name="plone.rightcolumn"
+    />
+
+    <portletmanager
+        name="plone.rightcolumn"
+        type="collective.personalportletcolumn.interfaces.IPersonalPortletManager"
+    />
+    
+
+  -->
+
+
+  <!--
+
+    Only portlets explicitly enabled, will be available to be added into the
+    personal column.
+
+    As an example, let's enable the calendar and the search portlets.
+
+   -->
+
+  <portlet extend="True"
+    addview="portlets.Calendar"
+    >
+    <for interface="collective.personalportletcolumn.interfaces.IPersonalPortletManager" />
+  </portlet>
+
+  <portlet extend="True"
+    addview="portlets.Search"
+    >
+    <for interface="collective.personalportletcolumn.interfaces.IPersonalPortletManager" />
+  </portlet>
+
+
+  <!--
+
+   The Static and Collection portlet types are somewhat different cases.
+   By default, they are enabled for Interface.
+   So, to have any sensible setup, we must Remove them for Interface
+   and enable them for IColumn and Dashboard. This by default leaves them
+   disabled for the personal column.
+
+   If we want to enable these for the personal column then we just need
+   to get rid of remove=True from the below definitions.
+
+   Note that this will only enable these portlets for Admin, since they
+   need different extra permission that are by default not granted for
+   ordinary users. For example the Static portlet needs
+   "plone.portlet.static.AddStaticPortlet", the Collection portlet
+   needs "plone.portlet.collection.AddCollectionPortlet" to
+   actually work for non-admins. This has to be arranged somewhere else.
+
+   -->
+
+
+
+  <portlet extend="True"
+    addview="plone.portlet.static.Static"
+    >
+    <for interface="zope.interface.Interface" remove="True" />
+    <for interface="plone.app.portlets.interfaces.IColumn" />
+    <for interface="plone.app.portlets.interfaces.IDashboard" />
+    <for interface="collective.personalportletcolumn.interfaces.IPersonalPortletManager" remove="True"/>   <!-- Not enabled -->
+  </portlet>
+
+  <portlet extend="True"
+    addview="plone.portlet.collection.Collection"
+    >
+    <for interface="zope.interface.Interface" remove="True" />
+    <for interface="plone.app.portlets.interfaces.IColumn" />
+    <for interface="plone.app.portlets.interfaces.IDashboard" />
+    <for interface="collective.personalportletcolumn.interfaces.IPersonalPortletManager" remove="True"/>   <!-- Not enabled -->
+  </portlet>
+
+ 
+</portlets>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+
+    <!-- Columns (portlet managers) -->
+    <portletmanager remove="True"
+        name="plone.rightcolumn"
+    />
+
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"
+    />
+
+</portlets>
+

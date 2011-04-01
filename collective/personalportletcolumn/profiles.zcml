@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.personalportletcolumn">
+
+    <genericsetup:registerProfile
+        name="default"
+        title="collective.personalportletcolumn"
+        directory="profiles/default"
+        description='Extension profile for the "collective.personalportletcolumn" Plone product.'
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="collective.personalportletcolumn Uninstall Profile"
+        directory="profiles/uninstall"
+        description='Remove the "collective.personalportletcolumn" Plone product.'
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+    <genericsetup:importStep
+        name="collective.personalportletcolumn.various"
+        title="collective.personalportletcolumn: miscellaneous import steps"
+        description="Various import steps that are not handled by GS import/export handlers."
+        handler="collective.personalportletcolumn.setuphandlers.setupVarious">
+        <depends name="portlets"/>
+    </genericsetup:importStep>
+</configure>
