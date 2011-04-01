@@ -9,6 +9,8 @@ from plone.portlets.interfaces import IPortletManager
 from plone.portlets.constants import USER_CATEGORY
 
 from .interfaces import IDefaultPersonalPortlet
+from collective.personalportletcolumn.interfaces import IPersonalPortletManager
+from zope.interface import providedBy
 from plone.app.portlets import portlets
 
 from plone.app.portlets.storage import UserPortletAssignmentMapping
@@ -31,16 +33,21 @@ def new_user(principal, event):
         if assignments:
             column = queryUtility(IPortletManager, name=name)
             if column is not None:
-                category = column.get(USER_CATEGORY, None)
-                if category is not None:
-                    manager = category.get(userid, None)
-                    if manager is None:
-                        manager = category[userid] = UserPortletAssignmentMapping(manager=name,
-                                                                                  category=USER_CATEGORY,
-                                                                                  name=userid)
-                    chooser = INameChooser(manager)
-                    for assignment in assignments:
-                        manager[chooser.chooseName(None, assignment)] = assignment
+                # Add the default portlets only, if this is our manager.
+                # We must check this to avoid adding the default portlets 
+                # when the product is not installed into the portal
+                # (but the event triggers even in this case)
+                if IPersonalPortletManager in providedBy(column):
+                    category = column.get(USER_CATEGORY, None)
+                    if category is not None:
+                        manager = category.get(userid, None)
+                        if manager is None:
+                            manager = category[userid] = UserPortletAssignmentMapping(manager=name,
+                                                                                      category=USER_CATEGORY,
+                                                                                      name=userid)
+                        chooser = INameChooser(manager)
+                        for assignment in assignments:
+                            manager[chooser.chooseName(None, assignment)] = assignment
 
 class DefaultPersonalPortlet(object):
     """The default default dashboard.
