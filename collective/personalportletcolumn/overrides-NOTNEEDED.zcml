@@ -21,15 +21,20 @@
         
         The problem affects current Plone 4.0 versions, so if a fix is emerged
         it can be integrated to the product.
+
+
+        XXX The following definition is now only needed to fix the dashboard
+        to work around the above bug. Personal portlets have their own
+        assignment and thus have this problem fixed.
     -->
 
-    <browser:view
+    <!--browser:view
       for="plone.portlets.interfaces.IPortletAssignmentMapping"
       name="+"
       class="plone.app.portlets.browser.adding.PortletAdding"
       allowed_interface="plone.app.portlets.browser.interfaces.IPortletAdding"
       permission="plone.app.portlets.ManageOwnPortlets"
-      />
+      /-->
 
 </configure>
 

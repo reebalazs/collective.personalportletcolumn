@@ -1,6 +1,7 @@
 from plone.portlets.interfaces import IPlacelessPortletManager
 from zope.interface import Interface
 from plone.app.portlets.browser.interfaces import IManageDashboardPortletsView
+from plone.app.portlets.interfaces import IUserPortletAssignmentMapping
 
 class IPersonalPortletManager(IPlacelessPortletManager):
     """xxxx xxxx """
@@ -22,3 +23,9 @@ class IDefaultPersonalPortlet(Interface):
         'plone.dashboard2', 'plone.dashboard3' and/or 'plone.dashboard4')
         and a list of portlet assignmen instances.
         """
+
+class IPersonalPortletAssignmentMapping(IUserPortletAssignmentMapping):
+    """A portlet assignment mapping that's user-specific
+    """
+
+

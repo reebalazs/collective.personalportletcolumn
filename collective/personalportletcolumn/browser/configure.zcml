@@ -8,9 +8,15 @@
       />
 
     <adapter
-      factory=".editmanager.PersonalportletEditPortletManagerRenderer"
+      factory=".editmanager.PersonalPortletsEditPortletManagerRenderer"
       provides="plone.portlets.interfaces.IPortletManagerRenderer"
         />
+
+    <adapter
+        factory=".traversal.PersonalPortletsNamespace"
+        name="personalportlets"
+        />
+
     
     <browser:page
       for="plone.portlets.interfaces.ILocalPortletAssignable"
@@ -19,6 +25,15 @@
       name="manage-personal-portlets"
       template="templates/manage-personal-portlets.pt"
     />
+
+    <!-- see overrides-NOTNEEDED.zcml -->
+    <browser:view
+      for="collective.personalportletcolumn.interfaces.IPersonalPortletAssignmentMapping"
+      name="+"
+      class="plone.app.portlets.browser.adding.PortletAdding"
+      allowed_interface="plone.app.portlets.browser.interfaces.IPortletAdding"
+      permission="plone.app.portlets.ManageOwnPortlets"
+      />
 
 
 </configure>

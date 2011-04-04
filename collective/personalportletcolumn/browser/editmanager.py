@@ -6,7 +6,7 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from collective.personalportletcolumn.interfaces import IPersonalPortletManager
 from plone.app.portlets.browser.editmanager import EditPortletManagerRenderer
 
-class PersonalportletEditPortletManagerRenderer(EditPortletManagerRenderer):
+class PersonalPortletsEditPortletManagerRenderer(EditPortletManagerRenderer):
     """Render a portlet manager in edit mode for the dashboard"""
     adapts(Interface, IDefaultBrowserLayer,  IManagePersonalPortletsView, IPersonalPortletManager)
 
