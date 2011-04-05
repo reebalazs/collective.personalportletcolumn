@@ -18,5 +18,7 @@
         />
 
     <adapter factory=".default.DefaultPersonalPortlet" />
+    
+    <adapter factory=".retriever.PersonalPortletRetriever" />
 
 </configure>
