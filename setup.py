@@ -18,7 +18,7 @@ setup(name='collective.personalportletcolumn',
       keywords='',
       author='',
       author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      url='https://github.com/collective/collective.personalportletcolumn',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['collective'],
@@ -36,6 +36,6 @@ setup(name='collective.personalportletcolumn',
       [z3c.autoinclude.plugin]
       target = plone
       """,
-      setup_requires=["PasteScript"],
-      paster_plugins=["ZopeSkel"],
+      setup_requires=[],
+      paster_plugins=[],
       )

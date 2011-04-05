@@ -25,4 +25,5 @@
         handler="collective.personalportletcolumn.setuphandlers.setupVarious">
         <depends name="portlets"/>
     </genericsetup:importStep>
+
 </configure>
