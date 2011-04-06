@@ -10,12 +10,18 @@
     <adapter
       factory=".editmanager.PersonalPortletsEditPortletManagerRenderer"
       provides="plone.portlets.interfaces.IPortletManagerRenderer"
-        />
+      />
 
     <adapter
-        factory=".traversal.PersonalPortletsNamespace"
-        name="personalportlets"
-        />
+      factory=".editmanager.PersonalPortletsContextualEditPortletManagerRenderer"
+      provides="plone.portlets.interfaces.IPortletManagerRenderer"
+      />
+
+
+    <adapter
+      factory=".traversal.PersonalPortletsNamespace"
+      name="personalportlets"
+      />
 
     
     <browser:page
